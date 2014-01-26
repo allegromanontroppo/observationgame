@@ -1,0 +1,14 @@
+
+.page-header
+  h1.text-center Observation Game
+
+form.form-horizontal
+  .form-group
+    label.col-sm-2.control-label for="select" Select Game
+    .col-sm-10
+      select#select ng-model="gameName" ng-options="availableGame.name.toLowerCase() as availableGame.name for availableGame in availableGames | orderBy:'name'" required=true class="form-control"
+        option value="" Choose game
+        
+  .form-group
+    .col-sm-10.col-sm-offset-2
+        button.btn.btn-primary ng-click="submit()" Submit
