@@ -21,11 +21,11 @@ gameApp.config(['$routeProvider',
 var availableGames = [
   {
     name: 'Dinosaurs',
-    dataUrl: '/data/dinosaurs.json'
+    dataUrl: 'data/dinosaurs.json'
   },
   {
     name: 'Aircraft',
-    dataUrl: '/data/aircraft.json'
+    dataUrl: 'data/aircraft.json'
   }
 ];
 
