@@ -1,27 +1,31 @@
 
 .page-header
   h1.text-center Observation Game: {{ subject }}
-.row ng-if="selectedItem"  
- 
-  .col-sm-9.col-sm-push-3
-     img.center-block.img-rounded ng-src="{{ selectedItem.image }}" style="max-height:313px;max-width:100%"
- 
-  .col-sm-3.col-sm-pull-9
-    .btn-group-vertical.btn-block
-      button.btn.btn-default.btn-lg ng-repeat="answer in answers | orderBy:'name'" ng-bind="answer.name" ng-click="onAnswered(answer.name)"
- 
-  p.pull-right
-    span.label.label-info 
-      | {{questionIndex}} of {{items.length}}
-    | &nbsp;
-    span.label.label-success 
-      | {{correctAnswerCount}} correct
-    | &nbsp;
-    span.label.label-danger 
-      | {{questionIndex - correctAnswerCount - 1}} wrong
+  
+div ng-if="selectedItem"   
+
+  .clearfix
+    p.pull-right
+      span.label.label-info 
+        | {{questionIndex}} of {{items.length}}
+      | &nbsp;
+      span.label.label-success 
+        | {{correctAnswerCount}} correct
+      | &nbsp;
+      span.label.label-danger 
+        | {{questionIndex - correctAnswerCount - 1}} wrong 
     
-div ng-if="gameOver"  
-  .jumbotron
+  .row  
+ 
+    .col-lg-9.col-lg-push-3.col-sm-8.col-sm-push-4
+       img.center-block.img-rounded ng-src="{{ selectedItem.image }}" style="max-height:313px;max-width:100%"
+ 
+    .col-lg-3.col-lg-pull-9.col-sm-4.col-sm-pull-8
+      .btn-group-vertical.btn-block
+        button.btn.btn-default.btn-lg ng-repeat="answer in answers | orderBy:'name'" ng-bind="answer.name" ng-click="onAnswered(answer.name)"
+    
+.jumbotron ng-if="gameOver"  
+  
     h2 Game Over
     h3 You scored {{correctAnswerCount}} out of {{items.length}}
     h4 ng-if="correctAnswerCount === items.length" Excellent work. A clean sweep.
