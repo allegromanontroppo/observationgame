@@ -61,12 +61,13 @@ gameApp.controller('GamePlayCtrl', ['$scope', '$http', '$routeParams', '$locatio
     $scope.subject = game.name;
     $scope.items = [];
     $scope.questionIndex = 1;
-    $scope.correctAnswerCount = 0;
     $scope.gameOver = false;
+    $scope.correctAnswerCount = 0;
     
     $scope.onAnswered = function(name){
       if($scope.selectedItem.name === name ){
         // correct answer    
+        $scope.selectedItem.correct = true;
         $scope.correctAnswerCount += 1;
       }
       $scope.questionIndex += 1;
@@ -78,7 +79,7 @@ gameApp.controller('GamePlayCtrl', ['$scope', '$http', '$routeParams', '$locatio
       $scope.correctAnswerCount = 0;
       $scope.gameOver = false;
       angular.forEach($scope.items, function(item){
-        item.shown = false;
+        item.shown = item.correct = false;
       });
       setRandomSelectedItem();
     };
